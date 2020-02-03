@@ -24,10 +24,10 @@ void bubble_sort(int *array, size_t size)
 				array[i] = array[i + 1];
 				array[i + 1] = swap;
 				ordered = 1;
+				print_array((const int *)array, size);
 			}
 			if (i == (len - 2))
 				len -= 1;
-			print_array((const int *)array, size);
 		}
 	}
 }
