@@ -1,6 +1,21 @@
 #include "sort.h"
 
 /**
+ * swap - change two elements of position
+ * @array: array to be sorted
+ * @fi: index first element
+ * @se: index second element
+ */
+void swap(int *array, int fi, int se)
+{
+	int temp;
+
+	temp = array[fi];
+	array[fi] = array[se];
+	array[se] = temp;
+}
+
+/**
  * quicksort - Function to divide the array
  * after the new position of the pivot is returned
  * @array: array to be sorted
@@ -13,7 +28,6 @@ void quicksort(int *array, int lo, int hi, size_t size)
 	int pivot = array[hi];
 	int i = lo;
 	int j;
-	int temp;
 
 	if (lo < hi)
 	{
@@ -21,17 +35,13 @@ void quicksort(int *array, int lo, int hi, size_t size)
 		{
 			if (array[j] < pivot)
 			{
-				temp = array[i];
-				array[i] = array[j];
-				array[j] = temp;
+				swap(array, i, j);
 				if (i != j)
 					print_array(array, size);
 				i += 1;
 			}
 		}
-		temp = array[i];
-		array[i] = array[hi];
-		array[hi] = temp;
+		swap(array, i, hi);
 		if (i != hi)
 			print_array(array, size);
 		quicksort(array, lo, i - 1, size);
