@@ -2,17 +2,20 @@
 
 /**
  * swap - change two elements of position
- * @array: array to be sorted
  * @fi: index first element
- * @se: index second element
+ * @la: index second element
+ * @array: array to be sorted
+ * @size: size of the array
  */
-void swap(int *array, int fi, int se)
+void swap(int *fi, int *la, int *array, size_t size)
 {
 	int temp;
 
-	temp = array[fi];
-	array[fi] = array[se];
-	array[se] = temp;
+	temp = *fi;
+	*fi = *la;
+	*la = temp;
+	if (temp != *fi)
+		print_array(array, size);
 }
 
 /**
@@ -35,15 +38,11 @@ void quicksort(int *array, int lo, int hi, size_t size)
 		{
 			if (array[j] < pivot)
 			{
-				swap(array, i, j);
-				if (i != j)
-					print_array(array, size);
+				swap(&array[i], &array[j], array, size);
 				i += 1;
 			}
 		}
-		swap(array, i, hi);
-		if (i != hi)
-			print_array(array, size);
+		swap(&array[i], &array[hi], array, size);
 		quicksort(array, lo, i - 1, size);
 		quicksort(array, i + 1, hi, size);
 	}
