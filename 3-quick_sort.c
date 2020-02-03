@@ -31,7 +31,7 @@ void quicksort(int *array, int lo, int hi, size_t size)
 
 	if (lo < hi)
 	{
-		for (j = lo; j < hi; j++)
+		for (j = lo; j <= hi; j++)
 		{
 			if (array[j] < pivot)
 			{
@@ -57,5 +57,5 @@ void quick_sort(int *array, size_t size)
 {
 	if (array == NULL || size < 2)
 		return;
-	quicksort(array, 0, ((int)size - 1), size);
+	quicksort(array, 0, (int)(size - 1), size);
 }
