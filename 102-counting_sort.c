@@ -26,19 +26,14 @@ void counting_sort(int *array, size_t size)
 	count = malloc(sizeof(int) * (k + 1));
 	if (count == NULL)
 		return;
-	i = 0;
-	while (array[i])
-	{
+	for (i = 0; i < (int)size; i++)
 		count[array[i]] += 1;
-		i++;
-	}
 	for (i = 0; i <= k; i++)
 	{
 		counter = counter + count[i];
 		count[i] = counter;
 	}
 	print_array(count, (size_t)(k + 1));
-	i = 0;
 	for (i = 0; i < (int)size; i++)
 	{
 		array[count[old[i]] - 1] = old[i];
