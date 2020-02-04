@@ -44,4 +44,5 @@ void radix_sort(int *array, size_t size)
 			array[k] = copy[k];
 		print_array(array, size);
 	}
+	free(copy);
 }
