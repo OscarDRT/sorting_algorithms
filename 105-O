@@ -1,0 +1,3 @@
+O(nlog(n))
+O(d*(n+b))
+O(d*(n+k))
