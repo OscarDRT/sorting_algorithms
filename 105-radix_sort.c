@@ -7,7 +7,7 @@
  */
 void radix_sort(int *array, size_t size)
 {
-	int big, i, k, j, div = 1, index, flag = 0;
+	int big, i, k, j, div = 1, index;
 	int *copy;
 
 	if (array == NULL || size < 2)
@@ -28,19 +28,18 @@ void radix_sort(int *array, size_t size)
 		{
 			for (j = 0; j < (int)size; j++)
 			{
-				if (flag == 0)
+				if (div == 1)
 				{
 					if (array[j] % 10 == i)
 						copy[index] = array[j], index++;
 				}
 				else
 				{
-					if (array[j] / div == i)
+					if ((array[j] / div) % 10 == i)
 						copy[index] = array[j], index++;
 				}
 			}
 		}
-		flag = 1;
 		for (k = 0; k < (int)size; k++)
 			array[k] = copy[k];
 		print_array(array, size);
